@@ -1,0 +1,247 @@
+# Medical Management System
+
+Project Partners: Sandesh Shadwani & Antra Dodeja
+
+A Java-based desktop application for managing medical records including doctors, patients, appointments, and departments. This application uses Java Swing for the GUI and MySQL for data storage.
+
+## Features
+
+- **Doctor Management**: Add and view doctor records with specialization, contact details
+- **Patient Management**: Manage patient information including age, phone, and address
+- **Appointment Scheduling**: Schedule and track appointments between patients and doctors
+- **Department Management**: Organize hospital departments with head doctors and locations
+- **Database Integration**: All data is stored in MySQL database with automatic table creation
+- **User-Friendly Interface**: Clean and intuitive GUI with color-coded sections
+
+## Prerequisites
+
+Before running this project, make sure you have:
+
+1. **Java Development Kit (JDK)** - Version 8 or higher
+2. **MySQL Server** - Installed and running
+3. **MySQL Connector/J** - Version 9.3.0 or compatible
+4. **IDE** - VS Code with Java Extension Pack (recommended) or any Java IDE
+
+## Step-by-Step Installation Guide
+
+### Step 1: Setup MySQL Database
+
+1. Open MySQL Command Line Client or MySQL Workbench
+2. Log in with your MySQL credentials
+3. Create the database by running the following command:
+   ```sql
+   CREATE DATABASE IF NOT EXISTS medical_db;
+
+### Step 2: Configure Database Connection
+
+1. Open the `DatabaseConnection.java` file in your project
+2. Locate lines 5 and 6 in the file:
+
+```java
+private static final String USERNAME = "root";
+private static final String PASSWORD = "password";
+```
+
+
+3. Replace `"root"` with your MySQL username
+4. Replace `"password"` with your MySQL password
+5. Save the file
+
+
+### Step 3: Add MySQL Connector to Project (VS Code)
+
+1. Download MySQL Connector/J 9.3.0 from the official MySQL website
+2. Extract the downloaded file to get the `.jar` file
+3. In VS Code, open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`)
+4. Type and select: `Java: Configure Classpath`
+5. Select your project from the list
+6. Click on the **"Library"** tab
+7. Click **"Add Library"** button
+8. Navigate to your downloaded folder and select the `mysql-connector-j-9.3.0.jar` file
+9. Click **"Select Jar Libraries"**
+10. The connector should now appear in your project's Referenced Libraries
+
+
+### Step 4: Run the Program
+
+1. Open the `HomePage.java` file
+2. Right-click in the editor and select **"Run Java"**
+3. Alternatively, you can run from terminal:
+
+```shellscript
+javac -cp ".:mysql-connector-j-9.3.0.jar" *.java
+java -cp ".:mysql-connector-j-9.3.0.jar" HomePage
+```
+
+
+
+
+## Project Structure
+
+```
+Medical Management System/
+├── DatabaseConnection.java    # Database connection and table creation
+├── HomePage.java             # Main application window
+├── ListWindow.java           # Display records in table format
+├── AddWindow.java            # Forms for adding new records
+└── README.md                 # This file
+```
+
+## User Manual
+
+### Getting Started
+
+When you first run the application, you'll see the **Medical Management System** homepage with four main options:
+
+![Homepage Layout]
+
+- **Doctor** (Blue button)
+- **Patient** (Green button)
+- **Appointment** (Orange button)
+- **Department** (Red button)
+
+
+### Viewing Records
+
+1. **Click any of the four main buttons** on the homepage
+2. A new window will open showing all existing records for that category
+3. Records are displayed in a table format with all relevant information
+4. Use the **"Back"** button to return to the homepage
+
+
+### Adding New Records
+
+1. **From any list window**, click the **"Add"** button (green button in bottom-right)
+2. A new form window will open with fields specific to that record type
+3. **Fill in all required fields**:
+
+**For Doctors:**
+
+1. Name
+2. Specialization
+3. Phone
+4. Email
+
+
+**For Patients:**
+
+1. Name
+2. Age
+3. Phone
+4. Address
+
+
+**For Appointments:**
+
+1. Patient Name
+2. Doctor Name
+3. Date (Format: YYYY-MM-DD)
+4. Time (Format: HH:MM)
+
+
+**For Departments:**
+
+1. Name
+2. Head Doctor
+3. Location
+
+
+
+4. **Click "Save"** to add the record to the database
+5. **Click "Cancel"** to discard changes and close the form
+6. After saving, you'll see a confirmation message and the list will automatically refresh
+
+
+### Navigation
+
+- **Homepage**: Central hub with four main categories
+- **List Windows**: Show all records with Add and Back buttons
+- **Add Windows**: Forms for entering new data with Save and Cancel buttons
+- **Back Button**: Always returns you to the previous window
+- **Window Controls**: Use the X button to close any window
+
+
+### Data Persistence
+
+- All data is automatically saved to the MySQL database
+- Records persist between application sessions
+- The database tables are created automatically on first run
+- No manual database setup required beyond creating the initial database
+
+
+### Tips for Best Experience
+
+1. **Date Format**: Always use YYYY-MM-DD format for appointment dates (e.g., 2024-12-25)
+2. **Time Format**: Use 24-hour format HH:MM for appointment times (e.g., 14:30)
+3. **Required Fields**: All fields must be filled before saving
+4. **Database Connection**: Ensure MySQL server is running before starting the application
+5. **Error Messages**: Read any error messages carefully for troubleshooting
+
+
+## Troubleshooting
+
+### Common Issues
+
+1. **"Access denied" error**: Check your MySQL username and password in `DatabaseConnection.java`
+2. **"No suitable driver" error**: Ensure MySQL Connector/J is properly added to classpath
+3. **"Connection refused" error**: Make sure MySQL server is running
+4. **Compilation errors**: Verify all Java files are in the same directory
+
+
+### Database Issues
+
+If you encounter database connection issues:
+
+1. Verify MySQL service is running
+2. Check if the `medical_db` database exists
+3. Confirm your MySQL credentials are correct
+4. Test connection using MySQL Workbench or command line
+
+
+## Technical Details
+
+- **Language**: Java
+- **GUI Framework**: Swing
+- **Database**: MySQL
+- **Architecture**: MVC pattern with separate classes for UI and data access
+- **Tables Created**: doctors, patients, appointments, departments
+
+
+## Future Enhancements
+
+Potential improvements for this system:
+
+- Edit and delete functionality for existing records
+- Search and filter capabilities
+- User authentication and role-based access
+- Report generation
+- Data export functionality
+- Appointment conflict detection
+
+
+## Support
+
+For technical support or questions about this project:
+
+1. Check the troubleshooting section above
+2. Verify all installation steps were completed correctly
+3. Ensure all prerequisites are properly installed
+4. Review error messages for specific guidance
+
+
+---
+
+**Note**: This application is designed for educational and demonstration purposes. For production use, additional security measures and error handling should be implemented.
+```
+
+```plaintext
+
+
+<Actions>
+  <Action name="Create installation script" description="Create batch/shell scripts for automated setup" />
+  <Action name="Add screenshots" description="Create visual guides with application screenshots" />
+  <Action name="Create video tutorial" description="Record a step-by-step video walkthrough" />
+  <Action name="Add troubleshooting guide" description="Expand troubleshooting section with more common issues" />
+  <Action name="Create user manual PDF" description="Convert the manual to a downloadable PDF format" />
+</Actions>
+```
